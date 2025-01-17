@@ -1,8 +1,6 @@
-function sum(a, b) {
-  return a + b;
+function IntToUrnfield(int) {
+  const oneCount = int % 5;
+  const fiveCount = Math.floor(int / 5);
+  return '/'.repeat(oneCount) + '~'.repeat(fiveCount);
 }
-function subtraction(a, b) {
-  return a - b;
-}
-
-module.exports = { sum, subtraction };
+module.exports = { IntToUrnfield };
