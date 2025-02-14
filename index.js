@@ -10,4 +10,42 @@ function UrnfieldToInt(urnfield) {
     count + (char === '/' ? 1 : 5), 0);
 }
 
-module.exports = { IntToUrnfield, UrnfieldToInt };
+/*
+I 	1
+V 	5
+X 	10
+L 	50
+C 	100
+D 	500
+M 	1000
+*/
+
+const romanNumerals = {
+  'I': 1,
+  'V': 5,
+  'X': 10,
+  'L': 50,
+  'C': 100,
+  'D': 500,
+  'M': 1000
+}
+
+function RomanToArabic(roman) {
+  if (roman === '') return 0;
+  return roman.split('').reduce((result, symbol) => {
+    // const current = romanNumerals[symbol];
+    // const next = (idx < accumulated.length - 1) ? romanNumerals[accumulated[idx + 1]] : 0;
+    // console.log(next);
+    // result += romanNumerals[symbol]
+    return {
+      accumulatedString: [
+        ...result.accumulatedString,
+        symbol,
+      ],
+      accumulatedValue: result.accumulatedValue += romanNumerals[symbol],
+    };
+  }, { accumulatedString: [], accumulatedValue: 0 }).accumulatedValue;
+}
+
+
+module.exports = { IntToUrnfield, UrnfieldToInt, RomanToArabic };
