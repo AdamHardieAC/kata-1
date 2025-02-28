@@ -32,17 +32,15 @@ const romanNumerals = {
 
 function RomanToArabic(roman) {
   if (roman === '') return 0;
-  return roman.split('').reduce((result, symbol) => {
-    // const current = romanNumerals[symbol];
-    // const next = (idx < accumulated.length - 1) ? romanNumerals[accumulated[idx + 1]] : 0;
-    // console.log(next);
-    // result += romanNumerals[symbol]
+  return roman.split('').reduce((result, symbol, symbolIdx) => {
+    const isCurrentGreatOrEqualToNext = (romanNumerals[symbol] >= (romanNumerals[roman.split('')[symbolIdx + 1]] || 0));
     return {
       accumulatedString: [
         ...result.accumulatedString,
         symbol,
       ],
-      accumulatedValue: result.accumulatedValue += romanNumerals[symbol],
+      accumulatedValue: (isCurrentGreatOrEqualToNext) ?
+        result.accumulatedValue += romanNumerals[symbol] : result.accumulatedValue -= romanNumerals[symbol]
     };
   }, { accumulatedString: [], accumulatedValue: 0 }).accumulatedValue;
 }
