@@ -30,33 +30,16 @@ const romanNumerals = {
   'M': 1000
 }
 
-// function RomanToArabic(roman) {
-//   if (roman === '') return 0;
-//   return [...roman].reduce((result, currentRomanNumeral, currentRomanNumeralIdx, array) => {
-//     const currentRomanNumeralInArabic = romanNumerals[currentRomanNumeral];
-//     const nextRomanNumeralInArabic = romanNumerals[array[currentRomanNumeralIdx + 1]] || 0;
-//     const isCurrentGreaterThanNext = currentRomanNumeralInArabic >= (nextRomanNumeralInArabic);
+function RomanToArabic(roman) {
+  if ([...roman].length === 0) return 0;
+  const currentRomanNumeralInArabic = romanNumerals[[...roman][0]];
+  const nextRomanNumeralInArabic = romanNumerals[[...roman][1]] || 0;
 
-//     return isCurrentGreaterThanNext
-//       ? result += currentRomanNumeralInArabic 
-//       : result -= currentRomanNumeralInArabic;
-//   }, 0);
-// }
+  const runTotal = (currentRomanNumeralInArabic < nextRomanNumeralInArabic)
+    ? nextRomanNumeralInArabic - currentRomanNumeralInArabic
+    : currentRomanNumeralInArabic + nextRomanNumeralInArabic;
 
-function RomanToArabic(roman, index = 0, total = 0){
-  if (index >= [...roman].length) return total;
-
-  const currentRomanNumeralInArabic = romanNumerals[[...roman][index]];
-  const nextRomanNumeralInArabic = romanNumerals[[...roman][index+1]] || 0;
-  const isCurrentGreaterThanNext = currentRomanNumeralInArabic >= nextRomanNumeralInArabic;
-  console.log(total);
-
-  console.log({currentRomanNumeralInArabic,nextRomanNumeralInArabic,isCurrentGreaterThanNext});
-  total += (isCurrentGreaterThanNext ? + currentRomanNumeralInArabic : - currentRomanNumeralInArabic);
-
-  console.log(total);
-
-  return RomanToArabic(roman, index + 1, total);
+  return RomanToArabic([...roman].splice(2)) + runTotal;
 }
 
 
