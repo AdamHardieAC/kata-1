@@ -1,4 +1,4 @@
-const { IntToUrnfield } = require('../index');
+const IntToUrnfield = require('../src/modules/IntToUrnField');
 
 test('Urnfield 0 equals empty', () => {
   expect(IntToUrnfield(0)).toBe('');

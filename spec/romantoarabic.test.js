@@ -1,4 +1,4 @@
-const { RomanToArabic } = require('../index');
+const { RomanToArabic } = require('../src/modules/RomanToArabic');
 
 test('Roman Numeral empty string equals 0', () => {
   expect(RomanToArabic('')).toBe(0);
