@@ -31,15 +31,20 @@ const romanNumerals = {
 }
 
 function RomanToArabic(roman) {
-  if ([...roman].length === 0) return 0;
-  const currentRomanNumeralInArabic = romanNumerals[[...roman][0]];
-  const nextRomanNumeralInArabic = romanNumerals[[...roman][1]] || 0;
+  if (roman === '') return 0;
 
-  const runTotal = (currentRomanNumeralInArabic < nextRomanNumeralInArabic)
-    ? nextRomanNumeralInArabic - currentRomanNumeralInArabic
-    : currentRomanNumeralInArabic + nextRomanNumeralInArabic;
+  const spreadRoman = [...roman];
+  const currentRomanNumeralInArabic = romanNumerals[spreadRoman[0]];
+  const nextRomanNumeralInArabic = romanNumerals[spreadRoman[1]] || 0;
+  const isCurrentGreaterThanNext = (currentRomanNumeralInArabic > nextRomanNumeralInArabic);
 
-  return RomanToArabic([...roman].splice(2)) + runTotal;
+  const runTotal = isCurrentGreaterThanNext 
+    ? currentRomanNumeralInArabic
+    : (currentRomanNumeralInArabic < nextRomanNumeralInArabic) 
+      ? nextRomanNumeralInArabic - currentRomanNumeralInArabic
+      : currentRomanNumeralInArabic + nextRomanNumeralInArabic;
+
+  return RomanToArabic(spreadRoman.splice(isCurrentGreaterThanNext ? 1 : 2).join('')) + runTotal;
 }
 
 

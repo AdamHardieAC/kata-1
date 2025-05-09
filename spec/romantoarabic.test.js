@@ -34,6 +34,10 @@ const testCases = [
     value: 1000
   },
   {
+    symbol: "III",
+    value: 3
+  },
+  {
     symbol: "II",
     value: 2
   },
@@ -48,6 +52,10 @@ const testCases = [
   {
     symbol: "VII",
     value: 7
+  },
+  {
+    symbol: "IX",
+    value: 9
   },
   {
     symbol: "MDCLXVI",
@@ -70,6 +78,14 @@ const testCases = [
     value: 16
   },
   {
+    symbol: "XIV",
+    value: 14
+  },
+  {
+    symbol: "XIX",
+    value: 19
+  },
+  {
     symbol: "XL",
     value: 40
   },
@@ -90,6 +106,14 @@ const testCases = [
     value: 400
   },
   {
+    symbol: "D",
+    value: 500
+  },
+  {
+    symbol: "DC",
+    value: 600
+  },
+  {
     symbol: "DCC",
     value: 700
   },
@@ -98,8 +122,28 @@ const testCases = [
     value: 900
   },
   {
+    symbol: "IM",
+    value: 999
+  },
+  {
     symbol: "MI",
     value: 1001
+  },
+  {
+    symbol: "MCM",
+    value: 1900
+  },
+  {
+    symbol: "MCLXIV",
+    value: 1164
+  },
+  {
+    symbol: "CCI",
+    value: 201
+  },
+  {
+    symbol: "MDCCLXIV",
+    value: 1764
   },
 
 ];
